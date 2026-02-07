@@ -19,6 +19,14 @@ locals {
   }]
 }
 
+locals {
+  instnace_size = lookup(var.instance_size, var.environment, "t2.micro")
+}
+
+locals {
+  configfileexists = fileexists("./config.json")
+  configdata = local.configfileexists ? jsondecode(file("./config.json")) : {}
+}
 
 
 resource "aws_s3_bucket" "storage" {

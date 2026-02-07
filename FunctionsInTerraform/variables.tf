@@ -27,3 +27,15 @@ variable "bucket_name" {
 variable "allowed_ports" {
   default = "80,443,8080,8181"
 }
+
+variable "instance_size" {
+  default = {
+    dev = "t2.micro"
+    staging = "t3.micro"
+    prod = "t3.large"
+  }
+}
+
+variable "environment" {
+  default = "staging"
+}
